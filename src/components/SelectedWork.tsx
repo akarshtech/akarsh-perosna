@@ -1,30 +1,7 @@
+import { useAtmosphere } from '@/context/AtmosphereContext';
+
 export default function SelectedWork() {
-  return (
-    <section id="work" className="bg-dark-brown grain pt-24 md:pt-32 pb-8">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        <div className="reveal">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-px bg-taupe/40" />
-            <span className="text-[10px] tracking-editorial text-taupe/60">
-              SELECTED WORK / 2026
-            </span>
-          </div>
-
-          <h2 className="font-serif text-[clamp(3rem,9vw,8rem)] leading-[0.92] text-cream tracking-tight">
-            SELECTED WORK
-          </h2>
-
-          <div className="mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <p className="max-w-2xl text-base md:text-lg text-taupe font-light leading-relaxed">
-              Websites I've designed and built while exploring different industries
-              and visual identities.
-            </p>
-            <span className="text-[10px] tracking-editorial text-taupe/40">
-              08 PROJECTS / INDEPENDENT BUILDS
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  const { mode } = useAtmosphere();
+  const content = { editorial: ['02 / Selected work', 'A few things', 'I\'ve made.', 'A curated archive of digital homes, built with curiosity and care.'], studio: ['02 — PROJECT INDEX', 'Selected', 'work.', 'Eight independent builds across hospitality, education, beauty, healthcare and more.'], raw: ['[02] / ARCHIVE', 'Things', 'I shipped.', 'A record of experiments, client builds and useful things made for the web.'] }[mode];
+  return <section id="work" className={`selected-work selected-work-${mode}`}><div className="section-shell"><div className="selected-work-top"><span className="eyebrow mono">{content[0]}</span><span className="mono">08 RECORDS / 2026</span></div><div className="selected-work-grid"><h2>{content[1]}<br /><em>{content[2]}</em></h2><p>{content[3]}</p></div><div className="selected-work-rule"><span className="mono">SCROLL TO EXPLORE</span><span>↓</span></div></div></section>;
 }

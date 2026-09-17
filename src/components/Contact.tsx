@@ -57,7 +57,7 @@ export default function Contact() {
           </p>
 
           <p className="mt-6 text-[10px] tracking-editorial text-taupe/30">
-            EMAIL: hello@akarshdubey.com <span className="text-warm-brown/40">(placeholder — replace with real email)</span>
+            EMAIL: hello@akarshdubey.com 
           </p>
         </div>
       </div>
