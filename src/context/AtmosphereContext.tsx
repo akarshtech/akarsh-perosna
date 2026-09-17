@@ -1,68 +1,38 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 
-export type Atmosphere = 'espresso' | 'forest' | 'burgundy';
+export type VisualMode = 'editorial' | 'studio' | 'raw';
 
-interface AtmosphereState {
-  atmosphere: Atmosphere;
-  cycleAtmosphere: () => void;
+interface VisualModeState {
+  mode: VisualMode;
+  cycleMode: () => void;
 }
 
-const AtmosphereContext = createContext<AtmosphereState | undefined>(undefined);
-
-const atmosphereAccents: Record<Atmosphere, string> = {
-  espresso: '#211C19',
-  forest: '#26352D',
-  burgundy: '#5A2630',
-};
+const VisualModeContext = createContext<VisualModeState | undefined>(undefined);
+const modes: VisualMode[] = ['editorial', 'studio', 'raw'];
 
 export function AtmosphereProvider({ children }: { children: ReactNode }) {
-  const [atmosphere, setAtmosphere] = useState<Atmosphere>('espresso');
-
-  const cycleAtmosphere = () => {
-    setAtmosphere((prev) => {
-      const order: Atmosphere[] = ['espresso', 'forest', 'burgundy'];
-      const nextIndex = (order.indexOf(prev) + 1) % order.length;
-      return order[nextIndex];
-    });
-  };
+  const [mode, setMode] = useState<VisualMode>('editorial');
+  const cycleMode = () => setMode((current) => modes[(modes.indexOf(current) + 1) % modes.length]);
 
   return (
-    <AtmosphereContext.Provider value={{ atmosphere, cycleAtmosphere }}>
-      <div
-        className="atmosphere-overlay"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          pointerEvents: 'none',
-          zIndex: 9999,
-          mixBlendMode: 'soft-light',
-          opacity: 0,
-          backgroundColor: atmosphereAccents[atmosphere],
-          transition: 'opacity 1.5s ease, background-color 1.5s ease',
-        }}
-      />
-      <div
-        ref={(el) => {
-          if (el) el.style.opacity = '1';
-        }}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          pointerEvents: 'none',
-          zIndex: 9998,
-          mixBlendMode: 'soft-light',
-          opacity: 0.18,
-          backgroundColor: atmosphereAccents[atmosphere],
-          transition: 'background-color 1.5s ease',
-        }}
-      />
-      {children}
-    </AtmosphereContext.Provider>
+    <VisualModeContext.Provider value={{ mode, cycleMode }}>
+      <div className={`visual-mode visual-mode-${mode}`}>{children}</div>
+    </VisualModeContext.Provider>
   );
 }
 
 export function useAtmosphere() {
-  const ctx = useContext(AtmosphereContext);
-  if (!ctx) throw new Error('useAtmosphere must be used within AtmosphereProvider');
-  return ctx;
+  const context = useContext(VisualModeContext);
+  if (!context) throw new Error('useAtmosphere must be used within AtmosphereProvider');
+  return context;
 }
+
+export const modeLabels: Record<VisualMode, string> = {
+  editorial: 'EDITORIAL',
+  studio: 'STUDIO',
+  raw: 'RAW',
+};
+
+export type Atmosphere = VisualMode;
+export const atmosphereLabels = modeLabels;
+export const atmosphereAccents = { editorial: '#a86a52', studio: '#8a9a7b', raw: '#d1b56f' } satisfies Record<VisualMode, string>;
