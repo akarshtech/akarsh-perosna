@@ -2,95 +2,42 @@ import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section
-      id="top"
-      className="relative min-h-screen bg-espresso grain overflow-hidden flex items-center"
-    >
-      {/* Background architectural image */}
-      <div className="absolute inset-0 opacity-[0.12]">
-        <img
-          src="https://images.pexels.com/photos/31735039/pexels-photo-31735039.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt=""
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
+    <section id="top" className="relative min-h-[clamp(680px,100svh,920px)] overflow-hidden bg-espresso grain flex items-center">
+      <div className="absolute right-[-10%] top-[18%] h-[48vw] w-[48vw] max-h-[720px] max-w-[720px] rounded-full border border-cream/10 opacity-60" />
+      <div className="absolute right-[8%] top-[30%] h-[28vw] w-[28vw] max-h-[420px] max-w-[420px] rounded-full border border-warm-brown/30 opacity-70 float-slow" />
+      <div className="absolute inset-y-0 right-0 hidden w-[38%] lg:block opacity-25">
+        <img src="https://images.pexels.com/photos/31735039/pexels-photo-31735039.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="" className="h-full w-full object-cover grayscale mix-blend-screen" loading="eager" />
       </div>
-
-      {/* Vertical text accents */}
-      <div className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 z-10">
-        <p className="text-vertical text-[10px] tracking-editorial text-taupe/50">
-          INDEPENDENT BUILDER
-        </p>
-      </div>
-      <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
-        <p className="text-vertical text-[10px] tracking-editorial text-taupe/50">
-          WEBSITES / DIGITAL EXPERIENCES / EXPERIMENTS
-        </p>
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 w-full pt-20">
-        <div className="max-w-5xl">
-          {/* Top editorial label */}
-          <div className="flex items-center gap-4 mb-12 md:mb-16">
-            <div className="w-12 h-px bg-taupe/40" />
-            <span className="text-[10px] tracking-editorial text-taupe/60">
-              PORTFOLIO / 2026
-            </span>
+      <div className="section-shell relative z-10 w-full pt-24 md:pt-28">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+          <div className="max-w-5xl">
+            <div className="mb-10 flex items-center gap-4 md:mb-14">
+              <span className="h-px w-12 bg-warm-brown" />
+              <span className="eyebrow">Independent builder / 2026</span>
+            </div>
+            <p className="mb-5 font-hand text-2xl text-warm-brown/70 md:text-3xl">Hi, I&apos;m Akarsh.</p>
+            <h1 className="display-balance font-serif text-[clamp(4rem,11.5vw,10.5rem)] leading-[.82] tracking-[-.035em] text-cream">
+              I build <em className="text-cream/70">websites</em><br />
+              people remember.
+            </h1>
+            <div className="mt-10 flex max-w-xl flex-col gap-8 md:mt-14 md:flex-row md:items-end md:gap-16">
+              <p className="max-w-sm text-base leading-relaxed text-taupe md:text-lg">High-converting digital homes for businesses and professionals who care how they show up online.</p>
+              <p className="eyebrow shrink-0">Mumbai, India<br />Available for select work</p>
+            </div>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row md:mt-12">
+              <a href="#work" className="group inline-flex items-center justify-center gap-3 bg-cream px-7 py-4 text-[11px] tracking-editorial text-espresso transition-colors hover:bg-warm-brown">Explore the work <ArrowDown size={14} className="transition-transform group-hover:translate-y-1" /></a>
+              <a href="#contact" className="group inline-flex items-center justify-center gap-3 border border-cream/25 px-7 py-4 text-[11px] tracking-editorial text-cream transition-colors hover:border-cream/60">Start a conversation <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></a>
+            </div>
           </div>
-
-          {/* Main headline */}
-          <h1 className="font-serif text-[clamp(3.5rem,12vw,11rem)] leading-[0.92] text-cream tracking-tight">
-            I BUILD THINGS
-            <br />
-            <span className="italic text-cream/90">ON THE INTERNET.</span>
-          </h1>
-
-          {/* Subtitle */}
-          <div className="mt-10 md:mt-14 max-w-2xl">
-            <p className="text-base md:text-lg text-taupe font-light leading-relaxed">
-              Akarsh Dubey — student, independent website builder &amp; digital experimenter.
-            </p>
-            <p className="text-xs tracking-editorial text-taupe/50 mt-4">
-              MUMBAI, INDIA · 2026
-            </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-cream text-espresso text-[11px] tracking-editorial hover:bg-cream/90 transition-all duration-400"
-            >
-              EXPLORE MY WORK
-              <ArrowDown size={14} className="group-hover:translate-y-1 transition-transform duration-400" />
-            </a>
-            <a
-              href="#about"
-              className="group inline-flex items-center gap-3 px-8 py-4 border border-cream/25 text-cream text-[11px] tracking-editorial hover:border-cream/50 hover:bg-cream/5 transition-all duration-400"
-            >
-              ABOUT ME
-              <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-400" />
-            </a>
-          </div>
-
-          {/* Handwritten annotation */}
-          <p className="mt-16 font-hand text-xl text-warm-brown/70 italic">
-            "still figuring it out."
-          </p>
+          <aside className="hidden border-l border-cream/15 pl-7 lg:block">
+            <span className="eyebrow">01 / 04</span>
+            <p className="mt-5 font-serif text-3xl leading-tight text-cream">Strategy, taste, and a little bit of code.</p>
+            <span className="mt-14 block text-[10px] tracking-editorial text-taupe/60">SCROLL TO EXPLORE ↓</span>
+          </aside>
         </div>
       </div>
-
-      {/* Bottom metadata bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-cream/10">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
-          <span className="text-[10px] tracking-editorial text-taupe/40">
-            SCROLL TO EXPLORE
-          </span>
-          <span className="text-[10px] tracking-editorial text-taupe/40">
-            8 PROJECTS / 3 EXPERIMENTS
-          </span>
-        </div>
+      <div className="absolute bottom-0 left-0 right-0 border-t border-cream/10">
+        <div className="section-shell flex items-center justify-between py-4"><span className="eyebrow text-taupe/60">Websites / digital experiences / experiments</span><span className="eyebrow text-taupe/60">08 projects</span></div>
       </div>
     </section>
   );

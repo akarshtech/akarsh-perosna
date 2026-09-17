@@ -1,30 +1,14 @@
 export default function SelectedWork() {
-  return (
-    <section id="work" className="bg-dark-brown grain pt-24 md:pt-32 pb-8">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        <div className="reveal">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-px bg-taupe/40" />
-            <span className="text-[10px] tracking-editorial text-taupe/60">
-              SELECTED WORK / 2026
-            </span>
-          </div>
-
-          <h2 className="font-serif text-[clamp(3rem,9vw,8rem)] leading-[0.92] text-cream tracking-tight">
-            SELECTED WORK
-          </h2>
-
-          <div className="mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <p className="max-w-2xl text-base md:text-lg text-taupe font-light leading-relaxed">
-              Websites I've designed and built while exploring different industries
-              and visual identities.
-            </p>
-            <span className="text-[10px] tracking-editorial text-taupe/40">
-              08 PROJECTS / INDEPENDENT BUILDS
-            </span>
-          </div>
+  return <section id="work" className="bg-dark-brown grain pb-10 pt-28 md:pb-16 md:pt-40">
+    <div className="section-shell">
+      <div className="reveal grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
+        <div>
+          <div className="mb-7 flex items-center gap-4"><span className="h-px w-12 bg-warm-brown" /><span className="eyebrow">02 / Selected work</span></div>
+          <h2 className="display-balance font-serif text-[clamp(3.5rem,8vw,8rem)] leading-[.86] tracking-[-.03em] text-cream">A few things<br /><em className="text-warm-brown">I&apos;ve made.</em></h2>
         </div>
+        <div className="flex flex-col gap-7 lg:pb-2 lg:pl-12"><p className="max-w-md text-base leading-relaxed text-taupe md:text-lg">Websites designed and built while exploring different industries, identities, and ways of making the internet feel more human.</p><span className="eyebrow text-taupe/50">08 projects / independent builds</span></div>
       </div>
-    </section>
-  );
+      <div className="mt-16 flex items-center gap-4 border-t border-cream/10 pt-4"><span className="eyebrow text-taupe/50">Scroll through the collection</span><span className="h-px flex-1 bg-cream/10" /><span className="font-serif text-xl text-warm-brown">↓</span></div>
+    </div>
+  </section>;
 }

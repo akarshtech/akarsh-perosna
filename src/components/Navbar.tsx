@@ -1,81 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'WORK', href: '#work' },
-  { label: 'WORKSHOP', href: '#workshop' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'Work', href: '#work' },
+  { label: 'Workshop', href: '#workshop' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('keydown', onKey);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('keydown', onKey); };
   }, []);
-
-  return (
-    <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-espresso/85 backdrop-blur-md border-b border-cream/10'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
-          <a href="#top" className="font-serif text-2xl md:text-3xl text-cream tracking-tight">
-            AKARSH
-          </a>
-
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[11px] tracking-editorial text-taupe hover:text-cream transition-colors duration-300 link-underline"
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="flex items-center gap-4 ml-6 pl-6 border-l border-cream/15">
-              <span className="text-[10px] tracking-editorial text-taupe/70">MUMBAI / INDIA</span>
-              <span className="text-[10px] tracking-editorial text-taupe/70">2026</span>
-            </div>
-          </div>
-
-          <button
-            className="md:hidden text-cream"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+  return <>
+    <nav aria-label="Primary navigation" className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? 'border-b border-cream/10 bg-espresso/85 backdrop-blur-xl' : ''}`}>
+      <div className="section-shell flex h-[72px] items-center justify-between md:h-[84px]">
+        <a href="#top" className="font-serif text-2xl tracking-tight text-cream" aria-label="Akarsh Dubey home">AKARSH<span className="text-warm-brown">.</span></a>
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => <a key={link.href} href={link.href} className="link-underline text-[10px] uppercase tracking-[.2em] text-taupe transition-colors hover:text-cream">{link.label}</a>)}
+          <span className="ml-3 border-l border-cream/15 pl-7 text-[10px] tracking-editorial text-taupe/60">MUMBAI / INDIA</span>
         </div>
-      </nav>
-
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-espresso md:hidden flex flex-col items-center justify-center gap-8 animate-fade-in">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="font-serif text-4xl text-cream"
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="flex gap-6 mt-8">
-            <span className="text-[11px] tracking-editorial text-taupe">MUMBAI / INDIA</span>
-            <span className="text-[11px] tracking-editorial text-taupe">2026</span>
-          </div>
-        </div>
-      )}
-    </>
-  );
+        <button type="button" className="flex size-11 items-center justify-center text-cream md:hidden" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
+      </div>
+    </nav>
+    {menuOpen && <div id="mobile-navigation" className="fixed inset-0 z-40 flex flex-col justify-center gap-7 bg-espresso px-6 md:hidden" role="dialog" aria-label="Mobile navigation">
+      {navLinks.map((link, index) => <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="flex items-baseline gap-4 font-serif text-5xl text-cream"><span className="font-sans text-[10px] tracking-editorial text-warm-brown">0{index + 1}</span>{link.label}</a>)}
+      <p className="mt-8 text-[10px] tracking-editorial text-taupe">MUMBAI / INDIA · 2026</p>
+    </div>}
+  </>;
 }
