@@ -226,3 +226,55 @@ a { color:inherit; text-decoration:none; }
   .visual-mode-studio .site-section,
   .visual-mode-studio .site-footer { transition:none; }
 }
+
+/* FAQ: one shared answer set, three intentional presentation systems. */
+.faq-section { position:relative; padding-block:var(--space-section); background:var(--bg); }
+.faq-intro { display:grid; grid-template-columns:minmax(0,1fr) minmax(16rem,28rem); gap:2rem 5rem; align-items:end; margin-bottom:clamp(3rem,7vw,7rem); }
+.faq-kicker { display:flex; align-items:center; gap:.75rem; grid-column:1 / -1; }
+.faq-kicker-line { width:3rem; height:1px; background:var(--accent); }
+.faq-intro h2 { margin:0; font:clamp(3.5rem,8vw,8rem)/.86 var(--display); letter-spacing:-.06em; }
+.faq-intro h2 em { color:var(--accent); font-style:italic; }
+.faq-intro > p { max-width:24rem; margin:0 0 .5rem; color:var(--muted); line-height:1.7; }
+.faq-list { border-top:1px solid var(--line); }
+.faq-item { border-bottom:1px solid var(--line); }
+.faq-trigger { display:grid; grid-template-columns:4rem minmax(0,1fr) auto; gap:1.5rem; align-items:center; width:100%; min-height:5.5rem; padding:1rem 0; border:0; background:transparent; color:var(--fg); text-align:left; cursor:pointer; }
+.faq-number { color:var(--accent); }
+.faq-question { font:clamp(1.05rem,2vw,1.65rem)/1.1 var(--display); letter-spacing:-.025em; }
+.faq-icon { width:1.1rem; height:1.1rem; color:var(--muted); transition:transform var(--motion) ease,color var(--motion) ease; }
+.faq-item.is-open .faq-icon { transform:rotate(180deg); color:var(--accent); }
+.faq-answer { display:grid; grid-template-columns:4rem minmax(0,42rem); gap:1.5rem; padding:0 0 1.75rem; }
+.faq-answer p { grid-column:2; margin:0; color:var(--muted); font-size:clamp(.95rem,1.4vw,1.15rem); line-height:1.75; }
+.faq-payment { margin:2rem 0 0; color:var(--accent); }
+.faq-payment span { color:var(--muted); }
+.visual-mode-editorial .faq-section { background:var(--surface); }
+.visual-mode-editorial .faq-intro { grid-template-columns:1.15fr .85fr; }
+.visual-mode-editorial .faq-list { max-width:58rem; margin-left:auto; }
+.visual-mode-editorial .faq-question { font-size:clamp(1.3rem,2.5vw,2.1rem); }
+.visual-mode-studio .faq-section { background:var(--bg); border-top:1px solid var(--line); }
+.visual-mode-studio .faq-intro { grid-template-columns:1fr 1fr; }
+.visual-mode-studio .faq-intro h2 { font-family:var(--body); font-weight:500; letter-spacing:-.08em; }
+.visual-mode-studio .faq-question { font-family:var(--body); font-weight:500; letter-spacing:-.04em; }
+.visual-mode-studio .faq-answer p, .visual-mode-studio .faq-intro > p { color:var(--text-secondary); }
+.visual-mode-studio .faq-trigger { min-height:4.75rem; }
+.visual-mode-raw .faq-section { background:var(--surface); border-top:2px solid var(--fg); }
+.visual-mode-raw .faq-intro h2 { font-family:var(--body); font-weight:500; text-transform:uppercase; letter-spacing:-.08em; }
+.visual-mode-raw .faq-intro h2 em { font-style:normal; }
+.visual-mode-raw .faq-list { border:1px solid var(--line); }
+.visual-mode-raw .faq-item { padding:0 1rem; }
+.visual-mode-raw .faq-trigger { min-height:4.5rem; }
+.visual-mode-raw .faq-question { font-family:var(--body); font-size:clamp(.9rem,1.8vw,1.25rem); font-weight:500; letter-spacing:.02em; }
+.visual-mode-raw .faq-answer { border-top:1px dashed var(--line); padding-top:1rem; }
+.visual-mode-raw .faq-answer p { font-family:var(--mono); font-size:.78rem; line-height:1.8; }
+@media (max-width:800px) {
+  .faq-intro, .visual-mode-editorial .faq-intro, .visual-mode-studio .faq-intro { grid-template-columns:1fr; gap:1.5rem; }
+  .faq-trigger { grid-template-columns:2.5rem minmax(0,1fr) auto; gap:.75rem; min-height:4.75rem; }
+  .faq-question { font-size:1rem; }
+  .faq-answer { grid-template-columns:2.5rem minmax(0,1fr); gap:.75rem; }
+  .faq-answer p { grid-column:2; font-size:.95rem; }
+  .faq-payment { line-height:1.8; }
+}
+@media (max-width:380px) {
+  .faq-trigger { grid-template-columns:2rem minmax(0,1fr) auto; gap:.5rem; }
+  .faq-answer { grid-template-columns:2rem minmax(0,1fr); gap:.5rem; }
+  .faq-answer p { font-size:.88rem; }
+}
