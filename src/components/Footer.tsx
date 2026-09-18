@@ -1,4 +1,5 @@
 import AtmosphereSwitch from '@/components/AtmosphereSwitch';
+import { useAtmosphere } from '@/context/AtmosphereContext';
 
 const footerLinks = [
   { label: 'WORK', href: '#work' },
@@ -8,8 +9,9 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const { mode } = useAtmosphere();
   return (
-    <footer className="bg-espresso border-t border-cream/10 py-12 md:py-16">
+    <footer className={`site-footer site-footer-${mode} bg-espresso border-t border-cream/10 py-12 md:py-16`}>
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
           {/* Brand */}

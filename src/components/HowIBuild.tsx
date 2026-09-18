@@ -1,9 +1,11 @@
 import { buildSteps } from '@/data/sections';
 import { ArrowRight } from 'lucide-react';
+import { useAtmosphere } from '@/context/AtmosphereContext';
 
 export default function HowIBuild() {
+  const { mode } = useAtmosphere();
   return (
-    <section className="bg-dark-brown grain py-24 md:py-32">
+    <section className={`site-section build-section build-section-${mode} bg-dark-brown grain py-24 md:py-32`}>
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">

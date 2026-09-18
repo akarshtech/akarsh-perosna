@@ -1,8 +1,10 @@
 import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { useAtmosphere } from '@/context/AtmosphereContext';
 
 export default function Contact() {
+  const { mode } = useAtmosphere();
   return (
-    <section id="contact" className="bg-espresso grain py-24 md:py-40 relative overflow-hidden">
+    <section id="contact" className={`site-section contact-section contact-section-${mode} bg-espresso grain py-24 md:py-40 relative overflow-hidden`}>
       {/* Subtle background image */}
       <div className="absolute inset-0 opacity-[0.06]">
         <img
