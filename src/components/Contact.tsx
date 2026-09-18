@@ -117,9 +117,9 @@ export default function Contact() {
             {mode === 'editorial' && (
               <div className="max-w-2xl">
                 <h2 className="font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] text-cream mb-8">
-                  Enquiry<br />received.
+                  Your email draft<br />is ready.
                 </h2>
-                <p className="text-lg text-taupe mb-8">Thanks for reaching out. I'll review the details and get back to you soon.</p>
+                <p className="text-lg text-taupe mb-8">Your email draft is ready — send it to complete your enquiry.</p>
                 <div className="space-y-4 text-sm">
                   <p className="text-taupe/80"><strong>EMAIL</strong><br />its.akarsh115e@gmail.com</p>
                   <p className="text-taupe/80"><strong>WHATSAPP</strong><br /><a href="https://wa.me/919372725949" className="hover:text-cream transition-colors">+91 93727 25949</a></p>
@@ -129,9 +129,9 @@ export default function Contact() {
             {mode === 'studio' && (
               <div>
                 <h2 className="font-sans text-[clamp(2rem,6vw,5rem)] font-medium tracking-tight text-fg mb-6">
-                  Enquiry Received
+                  Email Draft Ready
                 </h2>
-                <p className="text-base text-text-secondary mb-8 max-w-xl">Thanks for reaching out. I&apos;ll review the details and get back to you soon.</p>
+                <p className="text-base text-text-secondary mb-8 max-w-xl">Your email draft is ready — send it to complete your enquiry.</p>
                 <div className="grid grid-cols-2 gap-6 max-w-md text-sm">
                   <div>
                     <p className="text-text-secondary text-xs tracking-wide mb-2">EMAIL</p>
@@ -146,8 +146,8 @@ export default function Contact() {
             )}
             {mode === 'raw' && (
               <div className="font-mono space-y-6">
-                <p className="text-[1.2rem] font-bold">ENQUIRY RECEIVED.</p>
-                <p className="text-sm leading-relaxed">Thanks for reaching out. I&apos;ll review the details and get back to you soon.</p>
+                <p className="text-[1.2rem] font-bold">EMAIL DRAFT READY.</p>
+                <p className="text-sm leading-relaxed">Your email draft is ready — send it to complete your enquiry.</p>
                 <div className="border-t border-line pt-6 space-y-4 text-sm">
                   <p className="text-fg">EMAIL: its.akarsh115e@gmail.com</p>
                   <p className="text-fg">WHATSAPP: <a href="https://wa.me/919372725949" className="underline hover:text-accent transition-colors">+91 93727 25949</a></p>
@@ -417,7 +417,7 @@ export default function Contact() {
             disabled={isLoading}
             className={`w-full py-4 font-medium transition-all duration-300 ${mode === 'editorial' ? 'bg-cream text-espresso hover:bg-cream/90 disabled:opacity-50' : mode === 'studio' ? 'bg-accent text-surface hover:bg-accent/90 disabled:opacity-50' : 'border border-line text-fg hover:bg-fg/5 disabled:opacity-50 font-mono uppercase text-sm tracking-wide'}`}
           >
-            {isLoading ? 'Sending...' : 'Submit Enquiry'}
+            {isLoading ? 'Preparing email draft...' : 'Submit Enquiry'}
           </button>
         </form>
       </div>
