@@ -2,7 +2,7 @@ import { services } from '@/data/projects';
 
 export default function Services() {
   return (
-    <section className="site-section services-section bg-espresso grain py-24 md:py-32">
+    <section className="bg-espresso grain py-24 md:py-32">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">

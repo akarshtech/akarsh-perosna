@@ -2,7 +2,7 @@ import { ArrowUpRight, ArrowUp } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="site-section contact-section bg-espresso grain py-24 md:py-40 relative overflow-hidden">
+    <section id="contact" className="bg-espresso grain py-24 md:py-40 relative overflow-hidden">
       {/* Subtle background image */}
       <div className="absolute inset-0 opacity-[0.06]">
         <img
