@@ -2,7 +2,7 @@ import { buildLog } from '@/data/projects';
 
 export default function BuildLog() {
   return (
-    <section className="bg-dark-brown grain py-24 md:py-32">
+    <section className="site-section log-section bg-dark-brown grain py-24 md:py-32">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">
