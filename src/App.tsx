@@ -20,7 +20,7 @@ function App() {
 
   return (
     <AtmosphereProvider>
-      <div className="min-h-screen bg-espresso">
+      <div className="visual-mode-page min-h-screen">
         <Navbar />
         <main>
           <Hero />
