@@ -53,8 +53,14 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="mt-10 pt-6 border-t border-cream/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[10px] tracking-editorial text-taupe/60">
+          <a href="mailto:its.akarsh115e@gmail.com" className="hover:text-cream transition-colors">EMAIL / its.akarsh115e@gmail.com</a>
+          <a href="https://wa.me/919372725949" className="hover:text-cream transition-colors">WHATSAPP / +91 93727 25949</a>
+          <a href="tel:+919372725949" className="hover:text-cream transition-colors">PHONE / +91 93727 25949</a>
+        </div>
+
         {/* Bottom line */}
-        <div className="mt-10 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="mt-6 pt-6 border-t border-cream/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <p className="font-hand text-base text-warm-brown/40 italic">
               "still figuring it out."
