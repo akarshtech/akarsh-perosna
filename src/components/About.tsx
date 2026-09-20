@@ -1,9 +1,6 @@
-import { useAtmosphere } from '@/context/AtmosphereContext';
-
 export default function About() {
-  const { mode } = useAtmosphere();
   return (
-    <section id="about" className={`site-section about-section about-section-${mode} bg-forest grain py-24 md:py-32 overflow-hidden`}>
+    <section id="about" className="bg-forest grain py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">

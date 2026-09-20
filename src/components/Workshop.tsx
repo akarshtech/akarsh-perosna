@@ -1,10 +1,8 @@
 import { experiments } from '@/data/projects';
-import { useAtmosphere } from '@/context/AtmosphereContext';
 
 export default function Workshop() {
-  const { mode } = useAtmosphere();
   return (
-    <section id="workshop" className={`site-section workshop-section workshop-section-${mode} bg-burgundy grain py-24 md:py-32`}>
+    <section id="workshop" className="bg-burgundy grain py-24 md:py-32">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">

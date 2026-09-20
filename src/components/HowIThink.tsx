@@ -1,9 +1,6 @@
-import { useAtmosphere } from '@/context/AtmosphereContext';
-
 export default function HowIThink() {
-  const { mode } = useAtmosphere();
   return (
-    <section className={`site-section thinking-section thinking-section-${mode} bg-espresso grain py-24 md:py-32 overflow-hidden`}>
+    <section className="bg-espresso grain py-24 md:py-32 overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="flex items-center gap-4 mb-8">
