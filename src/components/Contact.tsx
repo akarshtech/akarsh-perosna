@@ -21,32 +21,6 @@ interface FormData {
   otherFeatures: string;
 }
 
-function createProjectEnquiryMailto(data: FormData) {
-  const body = [
-    'NEW PROJECT ENQUIRY',
-    '',
-    'CONTACT',
-    `Full name: ${data.fullName}`,
-    `Business/company name: ${data.businessName}`,
-    `Email: ${data.email}`,
-    `Phone / WhatsApp: ${data.phone}`,
-    '',
-    'BUSINESS',
-    `Business type: ${data.businessType}`,
-    `Business description: ${data.businessDescription}`,
-    '',
-    'PROJECT',
-    `Project type: ${data.projectType}`,
-    `Website goals: ${data.goals.join(', ')}`,
-    `Requested features: ${data.features.join(', ') || 'None specified'}`,
-    `Existing website URL: ${data.hasWebsite === 'yes' ? data.currentWebsiteUrl || 'Yes (URL not provided)' : 'No'}`,
-    `Budget: ${data.budget}`,
-    `Desired start date: ${data.timeline}`,
-  ].join('\\n');
-
-  return `mailto:its.akarsh115e@gmail.com?subject=${encodeURIComponent(`New Project Enquiry — ${data.businessName}`)}&body=${encodeURIComponent(body)}`;
-}
-
 export default function Contact() {
   const { mode } = useAtmosphere();
   const [formData, setFormData] = useState<FormData>({
@@ -108,7 +82,29 @@ export default function Contact() {
     }
 
     setIsLoading(true);
-    window.location.href = createProjectEnquiryMailto(formData);
+    const message = [
+      'NEW PROJECT ENQUIRY',
+      '',
+      'CONTACT',
+      `Name: ${formData.fullName}`,
+      `Business: ${formData.businessName}`,
+      `Email: ${formData.email}`,
+      `Phone / WhatsApp: ${formData.phone}`,
+      '',
+      'BUSINESS',
+      `Business type: ${formData.businessType}`,
+      `Business description: ${formData.businessDescription}`,
+      '',
+      'PROJECT',
+      `Project type: ${formData.projectType}`,
+      `Existing website: ${formData.hasWebsite === 'yes' ? formData.currentWebsiteUrl || 'Yes (URL not provided)' : 'No'}`,
+      `Website goals: ${formData.goals.join(', ')}`,
+      `Required features: ${formData.features.join(', ') || 'None specified'}`,
+      `Budget: ${formData.budget}`,
+      `Desired start date: ${formData.timeline}`,
+    ].join('\n');
+
+    window.location.href = `mailto:its.akarsh115e@gmail.com?subject=${encodeURIComponent(`New Project Enquiry — ${formData.businessName}`)}&body=${encodeURIComponent(message)}`;
     setSubmitted(true);
     setIsLoading(false);
   };
