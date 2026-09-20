@@ -16,7 +16,9 @@ export function AtmosphereProvider({ children }: { children: ReactNode }) {
 
   return (
     <VisualModeContext.Provider value={{ mode, cycleMode }}>
-      <div className={`visual-mode visual-mode-${mode}`}>{children}</div>
+      <div className={`visual-mode visual-mode-${mode}`} data-visual-mode={mode}>
+        {children}
+      </div>
     </VisualModeContext.Provider>
   );
 }

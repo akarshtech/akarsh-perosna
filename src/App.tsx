@@ -12,6 +12,7 @@ import HowIThink from '@/components/HowIThink';
 import BuildLog from '@/components/BuildLog';
 import About from '@/components/About';
 import Services from '@/components/Services';
+import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <AtmosphereProvider>
-      <div className="min-h-screen bg-espresso">
+      <div className="visual-mode-page min-h-screen">
         <Navbar />
         <main>
           <Hero />
@@ -33,6 +34,7 @@ function App() {
           <BuildLog />
           <About />
           <Services />
+          <FAQ />
           <Contact />
         </main>
         <Footer />
