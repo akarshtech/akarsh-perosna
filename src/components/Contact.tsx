@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { useAtmosphere } from '@/context/AtmosphereContext';
+import { supabase } from '@/lib/supabase';
 
 interface FormData {
   fullName: string;
@@ -19,32 +20,6 @@ interface FormData {
   otherProjectType: string;
   otherGoals: string;
   otherFeatures: string;
-}
-
-function createProjectEnquiryMailto(data: FormData) {
-  const body = [
-    'NEW PROJECT ENQUIRY',
-    '',
-    'CONTACT',
-    `Full name: ${data.fullName}`,
-    `Business/company name: ${data.businessName}`,
-    `Email: ${data.email}`,
-    `Phone / WhatsApp: ${data.phone}`,
-    '',
-    'BUSINESS',
-    `Business type: ${data.businessType}`,
-    `Business description: ${data.businessDescription}`,
-    '',
-    'PROJECT',
-    `Project type: ${data.projectType}`,
-    `Website goals: ${data.goals.join(', ')}`,
-    `Requested features: ${data.features.join(', ') || 'None specified'}`,
-    `Existing website URL: ${data.hasWebsite === 'yes' ? data.currentWebsiteUrl || 'Yes (URL not provided)' : 'No'}`,
-    `Budget: ${data.budget}`,
-    `Desired start date: ${data.timeline}`,
-  ].join('\\n');
-
-  return `mailto:its.akarsh115e@gmail.com?subject=${encodeURIComponent(`New Project Enquiry — ${data.businessName}`)}&body=${encodeURIComponent(body)}`;
 }
 
 export default function Contact() {
@@ -108,7 +83,34 @@ export default function Contact() {
     }
 
     setIsLoading(true);
-    window.location.href = createProjectEnquiryMailto(formData);
+    if (!supabase) {
+      setError('The enquiry service is temporarily unavailable. Please contact me on WhatsApp.');
+      setIsLoading(false);
+      return;
+    }
+
+    const { error: submitError } = await supabase.from('project_enquiries').insert({
+      full_name: formData.fullName,
+      business_name: formData.businessName,
+      business_type: formData.businessType,
+      project_type: formData.projectType,
+      business_description: formData.businessDescription,
+      goals: formData.goals,
+      features: formData.features,
+      has_website: formData.hasWebsite,
+      current_website_url: formData.currentWebsiteUrl || null,
+      budget: formData.budget,
+      timeline: formData.timeline,
+      email: formData.email,
+      phone: formData.phone,
+    });
+
+    if (submitError) {
+      setError('We could not save your enquiry. Please try again or contact me on WhatsApp.');
+      setIsLoading(false);
+      return;
+    }
+
     setSubmitted(true);
     setIsLoading(false);
   };
