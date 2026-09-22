@@ -14,7 +14,7 @@ export default function OpeningSequence() {
     <section className={`opening-sequence opening-sequence-${mode}`} aria-label="Opening visual sequence">
       <div className="opening-stage">
         <div className="opening-grid" aria-hidden="true" />
-        <div className="opening-project-art" aria-hidden="true"><span>08</span></div>
+        <div className="opening-project-art" aria-hidden="true"><img src="/images/project-01.png" alt="" /><span>08</span></div>
         <p className="opening-kicker mono">{copy.kicker}</p>
         <h2 className="opening-title" aria-label={copy.title}>
           {copy.title.split(' / ').map((word, index) => <span key={word} className={`opening-word opening-word-${index + 1}`}>{word}</span>)}
