@@ -50,24 +50,27 @@ export default function About() {
                     src="https://images.pexels.com/photos/8092469/pexels-photo-8092469.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Workspace with laptop and notebook"
                     loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+  className="w-full h-full object-cover"
+  onError={(event) => { event.currentTarget.style.visibility = 'hidden'; }}
+  />
                 </div>
                 <div className="aspect-[3/4] overflow-hidden hover-zoom mt-8">
                   <img
                     src="https://images.pexels.com/photos/4843167/pexels-photo-4843167.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Mumbai city at sunset"
                     loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+  className="w-full h-full object-cover"
+  onError={(event) => { event.currentTarget.style.visibility = 'hidden'; }}
+  />
                 </div>
                 <div className="col-span-2 aspect-[16/9] overflow-hidden hover-zoom -mt-4">
                   <img
                     src="https://images.pexels.com/photos/1668903/pexels-photo-1668903.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Architectural shadows"
                     loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+  className="w-full h-full object-cover"
+  onError={(event) => { event.currentTarget.style.visibility = 'hidden'; }}
+  />
                 </div>
               </div>
             </div>
