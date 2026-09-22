@@ -7,9 +7,12 @@ export default function PremiumInteractions() {
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
+      const sequence = document.querySelector<HTMLElement>('.opening-sequence');
+      const sequenceProgress = sequence ? Math.max(0, Math.min(1, -sequence.getBoundingClientRect().top / Math.max(sequence.offsetHeight - window.innerHeight, 1))) : 0;
       const viewportProgress = Math.min(window.scrollY / Math.max(window.innerHeight * 0.9, 1), 1);
       setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
       document.documentElement.style.setProperty('--opening-progress', viewportProgress.toFixed(3));
+      document.documentElement.style.setProperty('--sequence-progress', sequenceProgress.toFixed(3));
       document.documentElement.style.setProperty('--opening-shift', `${(viewportProgress * -72).toFixed(2)}px`);
       document.documentElement.style.setProperty('--opening-rail-shift', `${(viewportProgress * 40).toFixed(2)}px`);
       document.documentElement.style.setProperty('--opening-scale', (1 + viewportProgress * 0.22).toFixed(3));
