@@ -7,7 +7,9 @@ export default function PremiumInteractions() {
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
+      const viewportProgress = Math.min(window.scrollY / Math.max(window.innerHeight * 0.9, 1), 1);
       setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
+      document.documentElement.style.setProperty('--opening-progress', viewportProgress.toFixed(3));
     };
     const onMove = (event: MouseEvent) => setCursor({ x: event.clientX, y: event.clientY, active: true });
     const onLeave = () => setCursor((current) => ({ ...current, active: false }));
