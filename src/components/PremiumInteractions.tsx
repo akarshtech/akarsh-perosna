@@ -10,6 +10,17 @@ export default function PremiumInteractions() {
       const viewportProgress = Math.min(window.scrollY / Math.max(window.innerHeight * 0.9, 1), 1);
       setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
       document.documentElement.style.setProperty('--opening-progress', viewportProgress.toFixed(3));
+      document.documentElement.style.setProperty('--opening-shift', `${(viewportProgress * -72).toFixed(2)}px`);
+      document.documentElement.style.setProperty('--opening-rail-shift', `${(viewportProgress * 40).toFixed(2)}px`);
+      document.documentElement.style.setProperty('--opening-scale', (1 + viewportProgress * 0.22).toFixed(3));
+      document.documentElement.style.setProperty('--opening-rotation', `${(viewportProgress * 14).toFixed(2)}deg`);
+      document.documentElement.style.setProperty('--opening-opacity', (1 - viewportProgress * 0.28).toFixed(3));
+      document.documentElement.style.setProperty('--opening-rail-opacity', (1 - viewportProgress * 0.65).toFixed(3));
+      document.documentElement.style.setProperty('--opening-orbit-opacity', (0.9 - viewportProgress * 0.4).toFixed(3));
+      document.documentElement.style.setProperty('--opening-mark-shift', `${(viewportProgress * 48).toFixed(2)}px`);
+      document.documentElement.style.setProperty('--opening-mark-opacity', (1 - viewportProgress * 0.55).toFixed(3));
+      document.documentElement.style.setProperty('--opening-crosshair-scale', (1 + viewportProgress * 0.08).toFixed(3));
+      document.documentElement.style.setProperty('--opening-crosshair-opacity', (0.45 - viewportProgress * 0.2).toFixed(3));
     };
     const onMove = (event: MouseEvent) => setCursor({ x: event.clientX, y: event.clientY, active: true });
     const onLeave = () => setCursor((current) => ({ ...current, active: false }));

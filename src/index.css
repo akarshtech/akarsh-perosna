@@ -38,11 +38,11 @@ a { color:inherit; text-decoration:none; }
 
 /* Art-directed interaction layer */
 :root { --opening-progress:0; }
-.hero-editorial-grid, .studio-hero-grid, .raw-hero-grid { transform:translate3d(0, calc(var(--opening-progress) * -4.5rem), 0); opacity:calc(1 - (var(--opening-progress) * .28)); transition:transform .1s linear, opacity .1s linear; }
-.hero-rail, .raw-hero-foot { transform:translateY(calc(var(--opening-progress) * 2.5rem)); opacity:calc(1 - (var(--opening-progress) * .65)); }
-.hero-orbit { transform:scale(calc(1 + (var(--opening-progress) * .22))) rotate(calc(var(--opening-progress) * 14deg)); opacity:calc(.9 - (var(--opening-progress) * .4)); }
-.editorial-cover-mark { transform:translateY(calc(var(--opening-progress) * 3rem)); opacity:calc(1 - (var(--opening-progress) * .55)); }
-.raw-crosshair { transform:scale(calc(1 + (var(--opening-progress) * .08))); opacity:calc(.45 - (var(--opening-progress) * .2)); }
+.hero-editorial-grid, .studio-hero-grid, .raw-hero-grid { transform:translate3d(0, var(--opening-shift, 0px), 0); opacity:var(--opening-opacity, 1); transition:transform .1s linear, opacity .1s linear; }
+.hero-rail, .raw-hero-foot { transform:translateY(var(--opening-rail-shift, 0px)); opacity:var(--opening-rail-opacity, 1); }
+.hero-orbit { transform:scale(var(--opening-scale, 1)) rotate(var(--opening-rotation, 0deg)); opacity:var(--opening-orbit-opacity, .9); }
+.editorial-cover-mark { transform:translateY(var(--opening-mark-shift, 0px)); opacity:var(--opening-mark-opacity, 1); }
+.raw-crosshair { transform:scale(var(--opening-crosshair-scale, 1)); opacity:var(--opening-crosshair-opacity, .45); }
 .scroll-progress { position:fixed; inset:0 0 auto; z-index:80; height:2px; transform-origin:left; background:var(--accent); pointer-events:none; }
 .premium-cursor { position:fixed; z-index:90; width:9px; height:9px; margin:-4px 0 0 -4px; border:1px solid var(--accent); border-radius:50%; pointer-events:none; opacity:0; transition:width .25s ease,height .25s ease,opacity .25s ease,margin .25s ease; mix-blend-mode:difference; }
 .premium-cursor.is-visible { opacity:.75; }
