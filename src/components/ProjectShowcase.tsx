@@ -3,7 +3,7 @@ import type { Project } from '@/data/projects';
 import { useAtmosphere } from '@/context/AtmosphereContext';
 
 function Link({ project }: { project: Project }) { return <a className="project-link" href={project.url} target="_blank" rel="noopener noreferrer">VIEW PROJECT <ArrowUpRight size={14} /></a>; }
-function Image({ project }: { project: Project }) { return <a className="project-image" href={project.url} target="_blank" rel="noopener noreferrer"><img src={project.image} alt={project.name} loading="lazy" /><span className="image-cta">OPEN ↗</span></a>; }
+function Image({ project }: { project: Project }) { return <a className="project-image" aria-label={`Open ${project.name} project`} href={project.url} target="_blank" rel="noopener noreferrer"><img src={project.image} alt={project.name} loading="lazy" /><span className="image-cta">OPEN ↗</span></a>; }
 function Meta({ project }: { project: Project }) { return <div className="project-meta mono"><span>{project.number} / 08</span><span>{project.category}</span><span>{project.year}</span></div>; }
 
 export default function ProjectShowcase({ projects }: { projects: Project[] }) {
