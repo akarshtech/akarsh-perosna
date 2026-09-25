@@ -46,13 +46,28 @@ export default function About() {
             <div className="md:col-span-5">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="aspect-[3/4] overflow-hidden hover-zoom">
-                  <div className="about-art about-art-workspace" role="img" aria-label="Abstract workspace composition" />
+                  <img
+                    src="https://images.pexels.com/photos/8092469/pexels-photo-8092469.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Workspace with laptop and notebook"
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="aspect-[3/4] overflow-hidden hover-zoom mt-8">
-                  <div className="about-art about-art-city" role="img" aria-label="Abstract city-at-sunset composition" />
+                  <img
+                    src="https://images.pexels.com/photos/4843167/pexels-photo-4843167.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Mumbai city at sunset"
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="col-span-2 aspect-[16/9] overflow-hidden hover-zoom -mt-4">
-                  <div className="about-art about-art-architecture" role="img" aria-label="Abstract architectural shadows composition" />
+                  <img
+                    src="https://images.pexels.com/photos/1668903/pexels-photo-1668903.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Architectural shadows"
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -16,7 +16,6 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AdminDashboard from '@/components/AdminDashboard';
-import PremiumInteractions from '@/components/PremiumInteractions';
 
 function App() {
   useScrollReveal();
@@ -28,7 +27,6 @@ function App() {
   return (
     <AtmosphereProvider>
       <div className="visual-mode-page min-h-screen">
-        <PremiumInteractions />
         <Navbar />
         <main>
           <Hero />
