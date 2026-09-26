@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/data/projects';
 import { useAtmosphere } from '@/context/AtmosphereContext';
@@ -8,7 +11,41 @@ function Meta({ project }: { project: Project }) { return <div className="projec
 
 export default function ProjectShowcase({ projects }: { projects: Project[] }) {
   const { mode } = useAtmosphere();
-  return <section aria-label="Project showcase" className={`project-showcase project-showcase-${mode}`}>{projects.map((project) => mode === 'studio' ? <StudioProject key={project.number} project={project} /> : mode === 'raw' ? <RawProject key={project.number} project={project} /> : <EditorialProject key={project.number} project={project} />)}</section>;
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const cards = Array.from(section.querySelectorAll<HTMLElement>('.project-orbit-card'));
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const distance = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = Math.max(0, Math.min(1, -section.getBoundingClientRect().top / distance));
+      const rotation = progress * 360;
+      cards.forEach((card, index) => {
+        const angle = (index / cards.length) * 360 - rotation;
+        const normalized = Math.atan2(Math.sin(angle * Math.PI / 180), Math.cos(angle * Math.PI / 180));
+        const depth = Math.cos(angle * Math.PI / 180);
+        card.style.setProperty('--orbit-angle', `${angle}deg`);
+        card.style.setProperty('--orbit-depth', depth.toFixed(3));
+        card.style.setProperty('--orbit-x', `${Math.sin(angle * Math.PI / 180) * 43}vw`);
+        card.style.setProperty('--orbit-y', `${(1 - depth) * 10 - 4}vh`);
+        card.style.setProperty('--orbit-scale', (0.68 + (depth + 1) * 0.2).toFixed(3));
+        card.style.setProperty('--orbit-rotate', `${normalized * 16}deg`);
+        card.style.setProperty('--orbit-opacity', (0.46 + (depth + 1) * 0.27).toFixed(3));
+        card.style.zIndex = String(Math.round((depth + 1) * 100));
+      });
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(frame); };
+  }, [mode, projects.length]);
+
+  return <section ref={sectionRef} aria-label="Project showcase" className={`project-showcase project-showcase-${mode}`}><div className="project-orbit-sticky"><div className="project-orbit-track">{projects.map((project) => <div className="project-orbit-card" key={project.number}>{mode === 'studio' ? <StudioProject project={project} /> : mode === 'raw' ? <RawProject project={project} /> : <EditorialProject project={project} />}</div>)}</div></div></section>;
 }
 
 function EditorialProject({ project }: { project: Project }) {
