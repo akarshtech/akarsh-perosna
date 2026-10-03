@@ -15,6 +15,7 @@ import Services from '@/components/Services';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
 import AdminDashboard from '@/components/AdminDashboard';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
   return (
     <AtmosphereProvider>
       <div className="visual-mode-page min-h-screen">
+        <ScrollProgress />
         <Navbar />
         <main>
           <Hero />

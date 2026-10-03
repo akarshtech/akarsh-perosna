@@ -278,3 +278,78 @@ a { color:inherit; text-decoration:none; }
   .faq-answer { grid-template-columns:2rem minmax(0,1fr); gap:.5rem; }
   .faq-answer p { font-size:.88rem; }
 }
+
+/* ── V2 UI Polish ── */
+
+/* Scroll progress bar */
+.scroll-progress { position:fixed; top:0; left:0; right:0; height:2px; z-index:60; pointer-events:none; }
+.scroll-progress-bar { height:100%; background:var(--accent); transition:width .15s linear; opacity:.7; }
+
+/* Hero orbit subtle drift */
+@keyframes orbit-drift { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+.hero-orbit { animation:orbit-drift 8s ease-in-out infinite; }
+.visual-mode-raw .hero-orbit, .visual-mode-studio .hero-orbit { animation:none; }
+
+/* Project image overlay gradient on hover */
+.project-image::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to top, color-mix(in srgb, var(--bg) 50%, transparent) 0%, transparent 50%);
+  opacity:0; transition:opacity .5s ease; pointer-events:none;
+}
+.project-image:hover::after { opacity:.6; }
+
+/* Smooth focus transitions for form inputs */
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+  transition:border-color .3s ease, background .3s ease !important;
+}
+
+/* Contact form field-group dividers */
+.contact-section form > .grid + .grid,
+.contact-section form > div:not(.grid):not([class*="bg-"]) + .grid,
+.contact-section form > .grid + div:not(.grid):not([class*="bg-"]) {
+  padding-top:.5rem;
+}
+
+/* FAQ answer smooth open/close */
+.faq-answer { overflow:hidden; transition:max-height var(--motion) ease, opacity var(--motion) ease; }
+.faq-item:not(.is-open) .faq-answer { max-height:0; opacity:0; padding-block:0; }
+.faq-item.is-open .faq-answer { max-height:30rem; opacity:1; }
+
+/* Section reveal stagger */
+.reveal { transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal.is-visible { opacity:1; transform:translateY(0); }
+.reveal:not(.is-visible) { opacity:0; transform:translateY(36px); }
+
+/* Mobile nav smoother backdrop */
+.mobile-nav { animation:fadeIn .4s ease forwards; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* Button hover micro-interaction */
+.button { transition:background var(--motion) ease, border-color var(--motion) ease, transform var(--motion) ease; }
+.button:hover { transform:translateY(-1px); }
+.button:active { transform:translateY(0); }
+
+/* Project link arrow micro-interaction */
+.project-link { transition:color var(--motion) ease, gap var(--motion) ease; }
+.project-link:hover { gap:1rem; }
+
+/* Footer link hover refinement */
+.site-footer a { transition:color .3s ease, opacity .3s ease; }
+
+/* Studio mode image hover treatment */
+.visual-mode-studio .project-image:hover img { transform:scale(1.03); }
+.visual-mode-studio .project-image::after { opacity:.15; }
+
+/* Raw mode image hover treatment */
+.visual-mode-raw .project-image:hover img { transform:scale(1.02); filter:grayscale(.25) contrast(1.12); }
+.visual-mode-raw .project-image::after { background:linear-gradient(to top, var(--bg) 0%, transparent 40%); }
+
+@media (prefers-reduced-motion:reduce) {
+  .scroll-progress-bar { transition:none; }
+  .hero-orbit { animation:none; }
+  .reveal { transition:none !important; transform:none !important; opacity:1 !important; }
+  .button, .project-link { transition:none !important; }
+  .faq-answer { transition:none !important; }
+}

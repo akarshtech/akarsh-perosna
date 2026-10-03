@@ -203,203 +203,130 @@ export default function Contact() {
         </div>
 
         <form onSubmit={handleSubmit} className={`space-y-6 md:space-y-8 ${mode === 'raw' ? 'border border-line p-6 md:p-8' : ''}`}>
-          {/* Name and Business */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Full Name *</label>
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Your full name"
-                required
-                className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-              />
-            </div>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Business Name *</label>
-              <input
-                type="text"
-                name="businessName"
-                value={formData.businessName}
-                onChange={handleChange}
-                placeholder="Your business name"
-                className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-              />
-            </div>
-          </div>
-
-          {/* Business Type and Contact */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Business Type *</label>
-              <input
-                type="text"
-                name="businessType"
-                value={formData.businessType}
-                onChange={handleChange}
-                placeholder="e.g. Clinic, Salon, Restaurant"
-                className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-              />
-            </div>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Email *</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="your@email.com"
-                className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-              />
-            </div>
-          </div>
-
-          {/* Project Type and Phone */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What are you looking to build? *</label>
-              <select
-                name="projectType"
-                value={formData.projectType}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}
-              >
-                <option value="">Select project type</option>
-                <option value="new">New Website</option>
-                <option value="redesign">Redesign Existing Website</option>
-                <option value="landing">Landing Page</option>
-                <option value="portfolio">Portfolio Website</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Phone / WhatsApp *</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="+91 XXXXX XXXXX"
-                className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-              />
-            </div>
-          </div>
-
-          {/* Business Description */}
-          <div className={`${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Tell me about your business *</label>
-            <textarea
-              name="businessDescription"
-              value={formData.businessDescription}
-              onChange={handleChange}
-              placeholder="What does your business do and who are your customers?"
-              rows={4}
-              className={`w-full px-4 py-3 border transition-colors resize-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-            />
-          </div>
-
-          {/* Website Goals */}
-          <div className={`${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <label className={`block font-medium mb-4 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What should the website help you achieve? * (Select all that apply)</label>
-            <div className="space-y-3">
-              {['Get more enquiries', 'Get bookings / appointments', 'Showcase my work', 'Showcase products / services', 'Build credibility', 'Generate leads', 'Provide information to customers'].map(goal => (
-                <label key={goal} className={`flex items-center gap-3 cursor-pointer ${mode === 'editorial' ? 'text-cream' : mode === 'studio' ? 'text-fg' : 'text-fg font-mono text-sm'}`}>
-                  <input
-                    type="checkbox"
-                    value={goal}
-                    checked={formData.goals.includes(goal)}
-                    onChange={(e) => handleCheckbox(e, 'goals')}
-                    className={`w-4 h-4 cursor-pointer ${mode === 'editorial' ? 'accent-cream' : mode === 'studio' ? 'accent-accent' : 'accent-accent'}`}
-                  />
-                  {goal}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Website Features */}
-          <div className={`${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <label className={`block font-medium mb-4 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What features do you need? (Select all that apply)</label>
-            <div className="space-y-3">
-              {['WhatsApp integration', 'Contact / enquiry form', 'Appointment / booking system', 'Instagram integration', 'Google Maps'].map(feature => (
-                <label key={feature} className={`flex items-center gap-3 cursor-pointer ${mode === 'editorial' ? 'text-cream' : mode === 'studio' ? 'text-fg' : 'text-fg font-mono text-sm'}`}>
-                  <input
-                    type="checkbox"
-                    value={feature}
-                    checked={formData.features.includes(feature)}
-                    onChange={(e) => handleCheckbox(e, 'features')}
-                    className={`w-4 h-4 cursor-pointer ${mode === 'editorial' ? 'accent-cream' : mode === 'studio' ? 'accent-accent' : 'accent-accent'}`}
-                  />
-                  {feature}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Existing Website */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Do you already have a website? *</label>
-              <select
-                name="hasWebsite"
-                value={formData.hasWebsite}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}
-              >
-                <option value="">Select an option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-            {formData.hasWebsite === 'yes' && (
+          {/* 01 — About You */}
+          <div className={`form-group ${mode === 'editorial' ? 'border-t border-cream/15 pt-6' : mode === 'studio' ? 'border-t border-line pt-6' : ''}`}>
+            <span className={`block mb-5 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>01 — ABOUT YOU</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Current website URL</label>
-                <input
-                  type="url"
-                  name="currentWebsiteUrl"
-                  value={formData.currentWebsiteUrl}
-                  onChange={handleChange}
-                  placeholder="https://example.com"
-                  className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`}
-                />
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Full Name *</label>
+                <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Your full name" required className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
               </div>
-            )}
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Business Name *</label>
+                <input type="text" name="businessName" value={formData.businessName} onChange={handleChange} placeholder="Your business name" className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+              </div>
+            </div>
           </div>
 
-          {/* Budget and Timeline */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${mode === 'raw' ? 'border-b border-line pb-6' : ''}`}>
-            <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Approximate Budget *</label>
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}
-              >
-                <option value="">Select budget range</option>
-                <option value="5-10k">₹5,000 – ₹10,000</option>
-                <option value="10-15k">₹10,000 – ₹15,000</option>
-                <option value="15-20k">₹15,000 – ₹20,000</option>
-                <option value="20k+">₹20,000+</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
+          {/* 02 — Your Business */}
+          <div className={`form-group ${mode === 'editorial' ? 'border-t border-cream/15 pt-6' : mode === 'studio' ? 'border-t border-line pt-6' : ''}`}>
+            <span className={`block mb-5 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>02 — YOUR BUSINESS</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Business Type *</label>
+                <input type="text" name="businessType" value={formData.businessType} onChange={handleChange} placeholder="e.g. Clinic, Salon, Restaurant" className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+              </div>
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Email *</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+              </div>
+            </div>
+            <div className="mt-6">
+              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Tell me about your business *</label>
+              <textarea name="businessDescription" value={formData.businessDescription} onChange={handleChange} placeholder="What does your business do and who are your customers?" rows={4} className={`w-full px-4 py-3 border transition-colors resize-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+            </div>
+          </div>
+
+          {/* 03 — The Project */}
+          <div className={`form-group ${mode === 'editorial' ? 'border-t border-cream/15 pt-6' : mode === 'studio' ? 'border-t border-line pt-6' : ''}`}>
+            <span className={`block mb-5 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>03 — THE PROJECT</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What are you looking to build? *</label>
+                <select name="projectType" value={formData.projectType} onChange={handleChange} className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}>
+                  <option value="">Select project type</option>
+                  <option value="new">New Website</option>
+                  <option value="redesign">Redesign Existing Website</option>
+                  <option value="landing">Landing Page</option>
+                  <option value="portfolio">Portfolio Website</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Phone / WhatsApp *</label>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX" className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+              </div>
+            </div>
+          </div>
+
+          {/* 04 — What You Need */}
+          <div className={`form-group ${mode === 'editorial' ? 'border-t border-cream/15 pt-6' : mode === 'studio' ? 'border-t border-line pt-6' : ''}`}>
+            <span className={`block mb-5 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>04 — WHAT YOU NEED</span>
+            <div className="mb-6">
+              <label className={`block font-medium mb-4 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What should the website help you achieve? * (Select all that apply)</label>
+              <div className="space-y-3">
+                {['Get more enquiries', 'Get bookings / appointments', 'Showcase my work', 'Showcase products / services', 'Build credibility', 'Generate leads', 'Provide information to customers'].map(goal => (
+                  <label key={goal} className={`flex items-center gap-3 cursor-pointer ${mode === 'editorial' ? 'text-cream' : mode === 'studio' ? 'text-fg' : 'text-fg font-mono text-sm'}`}>
+                    <input type="checkbox" value={goal} checked={formData.goals.includes(goal)} onChange={(e) => handleCheckbox(e, 'goals')} className={`w-4 h-4 cursor-pointer ${mode === 'editorial' ? 'accent-cream' : 'accent-accent'}`} />
+                    {goal}
+                  </label>
+                ))}
+              </div>
             </div>
             <div>
-              <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>When would you like to get started? *</label>
-              <select
-                name="timeline"
-                value={formData.timeline}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}
-              >
-                <option value="">Select timeline</option>
-                <option value="asap">As soon as possible</option>
-                <option value="2weeks">Within 2 weeks</option>
-                <option value="1month">Within a month</option>
-                <option value="exploring">Just exploring</option>
-              </select>
+              <label className={`block font-medium mb-4 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>What features do you need? (Select all that apply)</label>
+              <div className="space-y-3">
+                {['WhatsApp integration', 'Contact / enquiry form', 'Appointment / booking system', 'Instagram integration', 'Google Maps'].map(feature => (
+                  <label key={feature} className={`flex items-center gap-3 cursor-pointer ${mode === 'editorial' ? 'text-cream' : mode === 'studio' ? 'text-fg' : 'text-fg font-mono text-sm'}`}>
+                    <input type="checkbox" value={feature} checked={formData.features.includes(feature)} onChange={(e) => handleCheckbox(e, 'features')} className={`w-4 h-4 cursor-pointer ${mode === 'editorial' ? 'accent-cream' : 'accent-accent'}`} />
+                    {feature}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 05 — Logistics */}
+          <div className={`form-group ${mode === 'editorial' ? 'border-t border-cream/15 pt-6' : mode === 'studio' ? 'border-t border-line pt-6' : ''}`}>
+            <span className={`block mb-5 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>05 — LOGISTICS</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Do you already have a website? *</label>
+                <select name="hasWebsite" value={formData.hasWebsite} onChange={handleChange} className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}>
+                  <option value="">Select an option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              {formData.hasWebsite === 'yes' && (
+                <div>
+                  <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Current website URL</label>
+                  <input type="url" name="currentWebsiteUrl" value={formData.currentWebsiteUrl} onChange={handleChange} placeholder="https://example.com" className={`w-full px-4 py-3 border transition-colors ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream placeholder-taupe/40 focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg placeholder-text-secondary focus:border-accent outline-none' : 'border-line bg-bg text-fg placeholder-fg/40 focus:border-accent outline-none font-mono text-sm'}`} />
+                </div>
+              )}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>Approximate Budget *</label>
+                <select name="budget" value={formData.budget} onChange={handleChange} className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}>
+                  <option value="">Select budget range</option>
+                  <option value="5-10k">₹5,000 – ₹10,000</option>
+                  <option value="10-15k">₹10,000 – ₹15,000</option>
+                  <option value="15-20k">₹15,000 – ₹20,000</option>
+                  <option value="20k+">₹20,000+</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+              <div>
+                <label className={`block font-medium mb-2 ${mode === 'editorial' ? 'text-cream text-sm tracking-editorial' : mode === 'studio' ? 'text-fg text-sm font-medium' : 'text-fg text-xs uppercase tracking-wide font-mono'}`}>When would you like to get started? *</label>
+                <select name="timeline" value={formData.timeline} onChange={handleChange} className={`w-full px-4 py-3 border transition-colors appearance-none ${mode === 'editorial' ? 'border-taupe/30 bg-espresso/50 text-cream focus:border-cream outline-none' : mode === 'studio' ? 'border-line bg-surface text-fg focus:border-accent outline-none' : 'border-line bg-bg text-fg focus:border-accent outline-none font-mono text-sm'}`}>
+                  <option value="">Select timeline</option>
+                  <option value="asap">As soon as possible</option>
+                  <option value="2weeks">Within 2 weeks</option>
+                  <option value="1month">Within a month</option>
+                  <option value="exploring">Just exploring</option>
+                </select>
+              </div>
             </div>
           </div>
 
