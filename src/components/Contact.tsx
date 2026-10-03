@@ -354,6 +354,16 @@ export default function Contact() {
           </button>
         </form>
       </div>
+
+      {/* Staff access */}
+      <div className="mt-12 flex justify-center">
+        <a
+          href="/admin"
+          className={`inline-flex items-center gap-2 text-xs opacity-40 hover:opacity-100 transition-opacity duration-300 ${mode === 'editorial' ? 'text-taupe/60 hover:text-cream' : 'text-fg/50 hover:text-accent'}`}
+        >
+          Staff
+        </a>
+      </div>
     </section>
   );
 }
