@@ -425,6 +425,12 @@ export default function Contact() {
           >
             {isLoading ? 'Preparing email draft...' : 'Submit Enquiry'}
           </button>
+          <a
+            href="/admin"
+            className={`mt-3 block text-center text-xs transition-colors ${mode === 'editorial' ? 'text-taupe hover:text-cream' : mode === 'studio' ? 'text-text-secondary hover:text-fg' : 'font-mono uppercase tracking-wide text-text-secondary hover:text-fg'}`}
+          >
+            Staff sign in
+          </a>
         </form>
       </div>
     </section>
