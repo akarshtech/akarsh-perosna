@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import { useAtmosphere } from '@/context/AtmosphereContext';
 import { supabase } from '@/lib/supabase';
 
@@ -118,50 +118,56 @@ export default function Contact() {
   if (submitted) {
     return (
       <section id="contact" className={`site-section contact-section contact-section-${mode} relative overflow-hidden`}>
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-32">
-          <div className="reveal text-center md:text-left">
-            {mode === 'editorial' && (
-              <div className="max-w-2xl">
-                <h2 className="font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] text-cream mb-8">
-                  Your email draft<br />is ready.
-                </h2>
-                <p className="text-lg text-taupe mb-8">Your email draft is ready — send it to complete your enquiry.</p>
-                <div className="space-y-4 text-sm">
-                  <p className="text-taupe/80"><strong>EMAIL</strong><br />its.akarsh115e@gmail.com</p>
-                  <p className="text-taupe/80"><strong>WHATSAPP</strong><br /><a href="https://wa.me/919372725949" className="hover:text-cream transition-colors">+91 93727 25949</a></p>
-                </div>
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-32">
+          <div className="reveal">
+            <div className="max-w-2xl mx-auto text-center">
+              <div
+                className="mx-auto mb-10 flex items-center justify-center w-16 h-16 rounded-full border border-taupe/40 text-taupe animate-[fadeIn_0.6s_ease-out]"
+                style={{ animation: 'successFadeIn 0.6s ease-out both' }}
+              >
+                <Check className="w-7 h-7" strokeWidth={1.25} />
               </div>
-            )}
-            {mode === 'studio' && (
-              <div>
-                <h2 className="font-sans text-[clamp(2rem,6vw,5rem)] font-medium tracking-tight text-fg mb-6">
-                  Email Draft Ready
-                </h2>
-                <p className="text-base text-text-secondary mb-8 max-w-xl">Your email draft is ready — send it to complete your enquiry.</p>
-                <div className="grid grid-cols-2 gap-6 max-w-md text-sm">
-                  <div>
-                    <p className="text-text-secondary text-xs tracking-wide mb-2">EMAIL</p>
-                    <p className="text-fg">its.akarsh115e@gmail.com</p>
-                  </div>
-                  <div>
-                    <p className="text-text-secondary text-xs tracking-wide mb-2">WHATSAPP</p>
-                    <p className="text-fg"><a href="https://wa.me/919372725949" className="hover:text-accent transition-colors">+91 93727 25949</a></p>
-                  </div>
-                </div>
+
+              <h2 className={`mb-6 animate-[fadeIn_0.6s_ease-out_0.05s_both] ${mode === 'editorial' ? 'font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] text-cream' : mode === 'studio' ? 'font-sans text-[clamp(2rem,6vw,5rem)] font-medium tracking-tight text-fg' : 'font-sans font-bold text-[clamp(1.8rem,6vw,4rem)] tracking-tight text-fg uppercase'}`}>
+                ENQUIRY RECEIVED
+              </h2>
+
+              <p className={`text-base mb-2 ${mode === 'editorial' ? 'text-taupe' : mode === 'studio' ? 'text-text-secondary' : 'text-fg/80'}`}>Thank you for reaching out.</p>
+              <p className={`text-sm leading-relaxed max-w-lg mx-auto mb-12 ${mode === 'editorial' ? 'text-taupe/70' : mode === 'studio' ? 'text-text-secondary' : 'text-fg/70 font-mono'}`}>
+                Your message has been successfully submitted. I appreciate your interest and will review your enquiry and get back to you as soon as possible.
+              </p>
+
+              <div className={`text-left max-w-lg mx-auto mb-12 ${mode === 'editorial' ? 'border-t border-cream/15 pt-8' : mode === 'studio' ? 'border-t border-line pt-8' : 'border-t border-line pt-6'}`}>
+                <span className={`block mb-3 ${mode === 'editorial' ? 'text-taupe/50 text-[10px] tracking-editorial' : mode === 'studio' ? 'text-muted text-[10px] tracking-wide uppercase' : 'text-fg/50 text-[10px] tracking-wide font-mono'}`}>WHAT HAPPENS NEXT?</span>
+                <p className={`text-sm leading-relaxed ${mode === 'editorial' ? 'text-taupe/80' : mode === 'studio' ? 'text-text-secondary' : 'text-fg/80 font-mono'}`}>
+                  I&apos;ll review the details you&apos;ve shared and reach out using the contact information you provided.
+                </p>
               </div>
-            )}
-            {mode === 'raw' && (
-              <div className="font-mono space-y-6">
-                <p className="text-[1.2rem] font-bold">EMAIL DRAFT READY.</p>
-                <p className="text-sm leading-relaxed">Your email draft is ready — send it to complete your enquiry.</p>
-                <div className="border-t border-line pt-6 space-y-4 text-sm">
-                  <p className="text-fg">EMAIL: its.akarsh115e@gmail.com</p>
-                  <p className="text-fg">WHATSAPP: <a href="https://wa.me/919372725949" className="underline hover:text-accent transition-colors">+91 93727 25949</a></p>
-                </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="#top"
+                  className={`inline-flex items-center gap-2 px-6 py-3 text-xs tracking-wide transition-all duration-300 ${mode === 'editorial' ? 'border border-taupe/30 text-cream hover:border-cream' : mode === 'studio' ? 'border border-line text-fg hover:border-accent' : 'border border-line text-fg hover:bg-fg/5 font-mono uppercase tracking-wide'}`}
+                >
+                  BACK TO HOME
+                </a>
+                <a
+                  href="#work"
+                  className={`inline-flex items-center gap-2 px-6 py-3 text-xs tracking-wide transition-all duration-300 ${mode === 'editorial' ? 'bg-cream text-espresso hover:bg-cream/90' : mode === 'studio' ? 'bg-accent text-surface hover:bg-accent/90' : 'border border-line text-fg hover:bg-fg/5 font-mono uppercase tracking-wide'}`}
+                >
+                  EXPLORE MY WORK
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
               </div>
-            )}
+            </div>
           </div>
         </div>
+        <style>{`
+          @keyframes successFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
       </section>
     );
   }
@@ -350,7 +356,7 @@ export default function Contact() {
             disabled={isLoading}
             className={`w-full py-4 font-medium transition-all duration-300 ${mode === 'editorial' ? 'bg-cream text-espresso hover:bg-cream/90 disabled:opacity-50' : mode === 'studio' ? 'bg-accent text-surface hover:bg-accent/90 disabled:opacity-50' : 'border border-line text-fg hover:bg-fg/5 disabled:opacity-50 font-mono uppercase text-sm tracking-wide'}`}
           >
-            {isLoading ? 'Preparing email draft...' : 'Submit Enquiry'}
+            {isLoading ? 'Sending your enquiry...' : 'Submit Enquiry'}
           </button>
         </form>
       </div>
