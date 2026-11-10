@@ -119,16 +119,13 @@ export default function Contact() {
     return (
       <section id="contact" className={`site-section contact-section contact-section-${mode} relative overflow-hidden`}>
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-32">
-          <div className="reveal">
+          <div style={{ animation: 'fadeIn 0.8s ease both' }}>
             <div className="max-w-2xl mx-auto text-center">
-              <div
-                className="mx-auto mb-10 flex items-center justify-center w-16 h-16 rounded-full border border-taupe/40 text-taupe animate-[fadeIn_0.6s_ease-out]"
-                style={{ animation: 'successFadeIn 0.6s ease-out both' }}
-              >
+              <div className={`mx-auto mb-10 flex items-center justify-center w-16 h-16 rounded-full border ${mode === 'editorial' ? 'border-taupe/40 text-taupe' : mode === 'studio' ? 'border-line text-accent' : 'border-line text-accent'}`}>
                 <Check className="w-7 h-7" strokeWidth={1.25} />
               </div>
 
-              <h2 className={`mb-6 animate-[fadeIn_0.6s_ease-out_0.05s_both] ${mode === 'editorial' ? 'font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] text-cream' : mode === 'studio' ? 'font-sans text-[clamp(2rem,6vw,5rem)] font-medium tracking-tight text-fg' : 'font-sans font-bold text-[clamp(1.8rem,6vw,4rem)] tracking-tight text-fg uppercase'}`}>
+              <h2 className={`mb-6 ${mode === 'editorial' ? 'font-serif text-[clamp(2.5rem,8vw,6rem)] leading-[0.95] text-cream' : mode === 'studio' ? 'font-sans text-[clamp(2rem,6vw,5rem)] font-medium tracking-tight text-fg' : 'font-sans font-bold text-[clamp(1.8rem,6vw,4rem)] tracking-tight text-fg uppercase'}`}>
                 ENQUIRY RECEIVED
               </h2>
 
@@ -162,12 +159,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <style>{`
-          @keyframes successFadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-        `}</style>
       </section>
     );
   }
