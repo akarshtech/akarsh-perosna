@@ -76,7 +76,6 @@ export default function CustomCursor() {
     const ringPos = { x: 0, y: 0 };
     let mode: CursorMode = 'default';
     let magnet: Element | null = null;
-    let hasPointer = false;
     let frame = 0;
 
     const tick = () => {
@@ -119,11 +118,10 @@ export default function CustomCursor() {
       if (event.pointerType === 'touch') return;
       pointer.x = event.clientX;
       pointer.y = event.clientY;
-      if (!hasPointer) {
-        hasPointer = true;
+      if (root.dataset.visible !== 'true') {
+        root.dataset.visible = 'true';
         dotPos.x = ringPos.x = event.clientX;
         dotPos.y = ringPos.y = event.clientY;
-        root.dataset.visible = 'true';
       }
       schedule();
     };
